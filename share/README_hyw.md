@@ -1,145 +1,55 @@
-# 工作流种类汇总
+# step1 安装环境
+### 创建虚拟环境
+conda create -n ComfyUI_312 python=3.12 -y
+
+### 安装依赖
+pip install -r requirements.txt
+pip install -r manager_requirements.txt
+pip install matplotlib
+pip install opencv-python
+pip install matrix-nio
+pip install PyOpenGL-accelerate
+
+
+### 删除虚拟环境 
+conda remove -n ComfyUI_312 --all -y  
+
+### 启动服务 
+
+python main.py --enable-manager
+python main.py --listen 0.0.0.0 --port 8188 --enable-manager --preview-method auto
+
+
+# step2 工作流（需求）、节点、模型
+
+
+### 需求1：工作流
 1. 风格迁移 
 2. 局部重绘
-3. 三视图 done
-4. 3D 效果图 done
-5. 画板
+3. 三视图 
+4. 3D 效果图 
+
+### 需求2: 节点下载
+/home/huyanwei/projects/ComfyUI/share/ComfyUI_nodes_clone.sh
+
+### 需求3: 模型下载
+
+
+### 需求4: 功能
+1. 画板结点：git@github.com:yichengup/Comfyui-Ycanvas.git
+2. 链接krita：git@github.com:Acly/krita-ai-diffusion.git
+3. 链接 blender：git@github.com:alexisrolland/ComfyUI-Blender.git
+
+
+### 需求5: 训练
+1. lora 训练
 
 
 
-## 局部重绘工作流结点 doing 
-1. 描述
+# step3 docker 服务
 
-
-2. 工作流
-
-
-3. 结点
-git@github.com:rgthree/rgthree-comfy.git
-git@github.com:cubiq/ComfyUI_essentials.git
-git@github.com:chflame163/ComfyUI_LayerStyle.git
-git@github.com:lquesada/ComfyUI-Inpaint-CropAndStitch.git
-git@github.com:jiandanplus/Comfyui-GLM_Prompt.git
-git@github.com:WASasquatch/was-node-suite-comfyui.git
-git@github.com:kijai/ComfyUI-KJNodes.git
-git@github.com:AlekPet/ComfyUI_Custom_Nodes_AlekPet.git
-git@github.com:pythongosssss/ComfyUI-Custom-Scripts.git
-git@github.com:petr-pr/ComfyUI-TranslationNode.git
-git@github.com:Suzie1/ComfyUI_Comfyroll_CustomNodes.git
-git@github.com:Kosinkadink/ComfyUI-Advanced-ControlNet.git
-git@github.com:ltdrdata/ComfyUI-Impact-Pack.git
-git@github.com:SipherAGI/comfyui-animatediff.git
-git@github.com:mingsky-ai/ComfyUI-MingNodes.git
-
-## 混元 3d（官方工作流）done
-1. 描述
-
-
-2. 工作流
-
-
-3. 结点
-
-
-## 三视图生成  done
-1. 描述
-
-
-2. 工作流
-
-
-3. 结点
-git@github.com:yolain/ComfyUI-Easy-Use.git
-git@github.com:11dogzi/Comfyui-HYPIR.git
-git@github.com:jtydhr88/ComfyUI-qwenmultiangle.git
-git@github.com:yolain/ComfyUI-Easy-Use.git
-
-
-## 上传参考图，房间原图or拼贴设计图，即可一键转渲染  doing 
-1. 描述
-
-
-2. 工作流
-https://www.liblib.art/modelinfo/e28d53a6b8a24791864fa1039582fc6f?from=feed&versionUuid=2585e01518564ac5ab5e9409e66e26d0
-
-
-
-3. 结点
-git@github.com:ssitu/ComfyUI_UltimateSDUpscale.git
-git@github.com:kijai/ComfyUI-Florence2.git
-git@github.com:melMass/comfy_mtb.git
-
-
-## 画板结点
-1. 描述
-
-
-2. 工作流
-
-
-3. 结点
-git@github.com:yichengup/Comfyui-Ycanvas.git
-
-
-
-
-## lora 训练
-
-
-
-
-
-
-## 链接krita
-1. 描述
-
-
-2. 工作流
-
-
-3. 结点
-git@github.com:Acly/krita-ai-diffusion.git
-
-
-##  链接 blender
-1. 描述
-
-
-2. 工作流
-
-
-3. 结点
-git@github.com:alexisrolland/ComfyUI-Blender.git
-
-
-
-
-## 通用结点
-git@github.com:Derfuu/Derfuu_ComfyUI_ModdedNodes.git
-git@github.com:MixLabPro/comfyui-mixlab-nodes.git
-git@github.com:cubiq/ComfyUI_essentials.git
-git@github.com:cubiq/ComfyUI_IPAdapter_plus.git
-git@github.com:kijai/ComfyUI-SUPIR.git
-git@github.com:chflame163/ComfyUI_LayerStyle_Advance.git
-git@github.com:kaibioinfo/ComfyUI_AdvancedRefluxControl.git
-git@github.com:kijai/ComfyUI-Florence2.git
-git@github.com:er1cw00/ComfyUI-tbox.git
-git@github.com:chrisgoringe/cg-use-everywhere.git
-git@github.com:Acly/comfyui-tooling-nodes.git
-git@github.com:Acly/comfyui-inpaint-nodes.git
-git@github.com:Fannovel16/comfyui_controlnet_aux.git
-git@github.com:city96/ComfyUI-GGUF.git
-git@github.com:nunchaku-ai/ComfyUI-nunchaku.git
-git@github.com:jjkramhoeft/ComfyUI-Jjk-Nodes.git
-git@github.com:theUpsider/ComfyUI-Logic.git
-git@github.com:M1kep/ComfyLiterals.git
-git@github.com:cardenluo/ComfyUI-Apt_Preset.git
-
-
-
-
-
-## dockerfile 构建
+```shell
+# dockerfile 构建
 基础镜像 nvidia/cuda:13.1.0-devel-ubuntu22.04 
 
 
@@ -204,10 +114,6 @@ docker run -d --name crrc_container \
 
 
 
-----
-创建虚拟环境
-conda create -n ComfyUI_312 python=3.12 -y
 
-删除虚拟环境 
-conda remove -n ComfyUI_312 --all -y  
+```
 
