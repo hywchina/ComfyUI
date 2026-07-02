@@ -10,6 +10,12 @@ pip install opencv-python
 pip install matrix-nio
 pip install PyOpenGL-accelerate
 
+tips: 安装nodes时，也有依赖要安装
+pip install --upgrade gguf
+pip install omegaconf 
+pip install zhipuai 
+pip install piexif         
+pip install onnx
 
 ### 删除虚拟环境 
 conda remove -n ComfyUI_312 --all -y  
@@ -19,6 +25,8 @@ conda remove -n ComfyUI_312 --all -y
 python main.py --enable-manager
 python main.py --listen 0.0.0.0 --port 8188 --enable-manager --preview-method auto
 
+ps -ef|grep main.py | awk '{print $2}'|xargs kill 
+nohup python main.py --listen 0.0.0.0 --port 8188 --enable-manager --preview-method auto > logs/20260702.log 2>&1 &
 
 # step2 工作流（需求）、节点、模型
 

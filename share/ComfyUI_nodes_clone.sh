@@ -16,19 +16,19 @@ REPO_LIST=(
 git@github.com:Acly/comfyui-inpaint-nodes.git
 git@github.com:rgthree/rgthree-comfy.git
 git@github.com:cubiq/ComfyUI_essentials.git
-git@github.com:chflame163/ComfyUI_LayerStyle.git
+# git@github.com:chflame163/ComfyUI_LayerStyle.git
 git@github.com:lquesada/ComfyUI-Inpaint-CropAndStitch.git
-git@github.com:jiandanplus/Comfyui-GLM_Prompt.git
+# git@github.com:jiandanplus/Comfyui-GLM_Prompt.git
 git@github.com:WASasquatch/was-node-suite-comfyui.git
 git@github.com:kijai/ComfyUI-KJNodes.git
 git@github.com:AlekPet/ComfyUI_Custom_Nodes_AlekPet.git
 git@github.com:pythongosssss/ComfyUI-Custom-Scripts.git
-git@github.com:petr-pr/ComfyUI-TranslationNode.git
+# git@github.com:petr-pr/ComfyUI-TranslationNode.git
 git@github.com:Suzie1/ComfyUI_Comfyroll_CustomNodes.git
 git@github.com:Kosinkadink/ComfyUI-Advanced-ControlNet.git
 git@github.com:ltdrdata/ComfyUI-Impact-Pack.git
 git@github.com:SipherAGI/comfyui-animatediff.git
-git@github.com:mingsky-ai/ComfyUI-MingNodes.git
+# git@github.com:mingsky-ai/ComfyUI-MingNodes.git
 git@github.com:yolain/ComfyUI-Easy-Use.git
 git@github.com:11dogzi/Comfyui-HYPIR.git
 git@github.com:jtydhr88/ComfyUI-qwenmultiangle.git
@@ -36,8 +36,8 @@ git@github.com:ssitu/ComfyUI_UltimateSDUpscale.git
 git@github.com:kijai/ComfyUI-Florence2.git
 git@github.com:melMass/comfy_mtb.git
 git@github.com:yichengup/Comfyui-Ycanvas.git
-git@github.com:Acly/krita-ai-diffusion.git
-git@github.com:alexisrolland/ComfyUI-Blender.git
+# git@github.com:Acly/krita-ai-diffusion.git
+# git@github.com:alexisrolland/ComfyUI-Blender.git
 git@github.com:Derfuu/Derfuu_ComfyUI_ModdedNodes.git
 git@github.com:MixLabPro/comfyui-mixlab-nodes.git
 git@github.com:cubiq/ComfyUI_IPAdapter_plus.git
@@ -48,8 +48,8 @@ git@github.com:er1cw00/ComfyUI-tbox.git
 git@github.com:chrisgoringe/cg-use-everywhere.git
 git@github.com:Acly/comfyui-tooling-nodes.git
 git@github.com:Fannovel16/comfyui_controlnet_aux.git
-git@github.com:city96/ComfyUI-GGUF.git
-git@github.com:nunchaku-ai/ComfyUI-nunchaku.git
+# git@github.com:city96/ComfyUI-GGUF.git
+# git@github.com:nunchaku-ai/ComfyUI-nunchaku.git
 git@github.com:jjkramhoeft/ComfyUI-Jjk-Nodes.git
 git@github.com:theUpsider/ComfyUI-Logic.git
 git@github.com:M1kep/ComfyLiterals.git
