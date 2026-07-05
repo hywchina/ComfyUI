@@ -37,8 +37,21 @@ nohup python main.py --listen 0.0.0.0 --port 8188 --enable-manager --preview-met
 3. 三视图 
 4. 3D 效果图 
 
+、、、shell
+1. 工作流名称：3d_hunyuan3d_multiview_to_model
+
+
+```
+
+
 ### 需求2: 节点下载
 /home/huyanwei/projects/ComfyUI/share/ComfyUI_nodes_clone.sh
+
+git@github.com:kijai/ComfyUI-KJNodes.git
+git@github.com:rgthree/rgthree-comfy.git
+git@github.com:pythongosssss/ComfyUI-Custom-Scripts.git
+git@github.com:chflame163/ComfyUI_LayerStyle.git
+git@github.com:Acly/comfyui-inpaint-nodes.git
 
 ### 需求3: 模型下载
 
