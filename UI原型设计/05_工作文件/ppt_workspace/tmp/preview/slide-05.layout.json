@@ -1,0 +1,640 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/wrdcqo",
+    "id": "wrdcqo",
+    "slide": 5,
+    "layoutId": "0618db61-9db2-4ee2-b661-cc1f1ff29475",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "e27ceb62-b288-48a7-9a50-a3cdc0ef9aa9",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "0618db61-9db2-4ee2-b661-cc1f1ff29475",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "e27ceb62-b288-48a7-9a50-a3cdc0ef9aa9",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "e27ceb62-b288-48a7-9a50-a3cdc0ef9aa9",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dcbulwv",
+      "id": "1",
+      "bbox": [
+        58,
+        42,
+        1110,
+        52
+      ],
+      "geometry": "rect",
+      "text": "客室效果生成页承接核心设计工作流",
+      "textPreview": "客室效果生成页承接核心设计工作流",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "fontSize": 38,
+        "typeface": "+mn-lt",
+        "color": "#151922",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "客室效果生成页承接核心设计工作流"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "客室效果生成页承接核心设计工作流",
+          "resolvedTextStyle": {
+            "fontSize": 38,
+            "color": "#151922",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "客室效果生成页承接核心设计工作流",
+              "fontSize": 38,
+              "color": "#151922",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d4vmtwra",
+      "id": "2",
+      "bbox": [
+        60,
+        92,
+        900,
+        34
+      ],
+      "geometry": "rect",
+      "text": "这是首屏主工作台，完整展示输入、参数、画布、任务队列和保存动作。",
+      "textPreview": "这是首屏主工作台，完整展示输入、参数、画布、任务队列和保存动作。",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#64748B",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "这是首屏主工作台，完整展示输入、参数、画布、任务队列和保存动作。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "这是首屏主工作台，完整展示输入、参数、画布、任务队列和保存动作。",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#64748B",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "这是首屏主工作台，完整展示输入、参数、画布、任务队列和保存动作。",
+              "fontSize": 18,
+              "color": "#64748B",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oj2t83it",
+      "id": "3",
+      "bbox": [
+        58,
+        130,
+        1164,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#C7001A",
+      "lineColor": "#C7001A",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/yxobm58z",
+      "id": "4",
+      "bbox": [
+        58,
+        158,
+        760,
+        446
+      ],
+      "geometry": "roundRect",
+      "alt": "客室效果生成截图",
+      "contentType": "image/png",
+      "imageFit": "cover",
+      "imageMask": {
+        "geometry": "roundRect",
+        "adjustmentList": [
+          {
+            "name": "adj",
+            "formula": "val 2691"
+          }
+        ]
+      },
+      "asset": {
+        "assetId": "f6fb0d93-5496-4abe-8a73-b25b76b02e77",
+        "contentType": "image/png",
+        "byteLength": 242639
+      }
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61032lsz",
+      "id": "5",
+      "bbox": [
+        858,
+        158,
+        330,
+        446
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#E5E7EB",
+      "lineWidth": 1
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsji5sne",
+      "id": "6",
+      "bbox": [
+        888,
+        190,
+        230,
+        34
+      ],
+      "geometry": "rect",
+      "text": "需求响应",
+      "textPreview": "需求响应",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "+mn-lt",
+        "color": "#C7001A",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "需求响应"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "需求响应",
+          "resolvedTextStyle": {
+            "fontSize": 28,
+            "color": "#C7001A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "需求响应",
+              "fontSize": 28,
+              "color": "#C7001A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o7qpg3ex",
+      "id": "7",
+      "bbox": [
+        888,
+        259,
+        9,
+        9
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#C7001A",
+      "lineColor": "#C7001A",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vahoza1g",
+      "id": "8",
+      "bbox": [
+        910,
+        250,
+        238,
+        48
+      ],
+      "geometry": "rect",
+      "text": "上传平面图、白模截图或参考图",
+      "textPreview": "上传平面图、白模截图或参考图",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#334155",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "上传平面图、白模截图或参"
+          },
+          {
+            "index": 2,
+            "text": "考图"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "上传平面图、白模截图或参考图",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#334155",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "上传平面图、白模截图或参考图",
+              "fontSize": 18,
+              "color": "#334155",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6tovahoz",
+      "id": "9",
+      "bbox": [
+        888,
+        309,
+        9,
+        9
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#C7001A",
+      "lineColor": "#C7001A",
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/c3ylc7u5",
+      "id": "10",
+      "bbox": [
+        910,
+        300,
+        238,
+        48
+      ],
+      "geometry": "rect",
+      "text": "支持屏幕捕捉实时传入工作流",
+      "textPreview": "支持屏幕捕捉实时传入工作流",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#334155",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "支持屏幕捕捉实时传入工作"
+          },
+          {
+            "index": 2,
+            "text": "流"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "支持屏幕捕捉实时传入工作流",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#334155",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "支持屏幕捕捉实时传入工作流",
+              "fontSize": 18,
+              "color": "#334155",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1kre1w7m",
+      "id": "11",
+      "bbox": [
+        888,
+        359,
+        9,
+        9
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#C7001A",
+      "lineColor": "#C7001A",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/uxc3ylc7",
+      "id": "12",
+      "bbox": [
+        910,
+        350,
+        238,
+        48
+      ],
+      "geometry": "rect",
+      "text": "显示当前 API、Checkpoint 和 LoRA",
+      "textPreview": "显示当前 API、Checkpoint 和 LoRA",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#334155",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "显示当前 API、Checkpoint"
+          },
+          {
+            "index": 2,
+            "text": "和 LoRA"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "显示当前 API、Checkpoint 和 LoRA",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#334155",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "显示当前 API、Checkpoint 和 LoRA",
+              "fontSize": 18,
+              "color": "#334155",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ji5snelo",
+      "id": "13",
+      "bbox": [
+        888,
+        409,
+        9,
+        9
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#C7001A",
+      "lineColor": "#C7001A",
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/crmhk3q5",
+      "id": "14",
+      "bbox": [
+        910,
+        400,
+        238,
+        48
+      ],
+      "geometry": "rect",
+      "text": "生成结果可局部遮罩修改并保存资源库",
+      "textPreview": "生成结果可局部遮罩修改并保存资源库",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#334155",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "生成结果可局部遮罩修改并"
+          },
+          {
+            "index": 2,
+            "text": "保存资源库"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "生成结果可局部遮罩修改并保存资源库",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#334155",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "生成结果可局部遮罩修改并保存资源库",
+              "fontSize": 18,
+              "color": "#334155",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}
