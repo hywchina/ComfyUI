@@ -236,249 +236,240 @@
 
     .home-page {
       min-height: calc(100vh - 126px);
-      background:
-        radial-gradient(circle at 12% 8%, rgba(199,0,26,.055), transparent 26%),
-        radial-gradient(circle at 82% 36%, rgba(199,0,26,.045), transparent 28%),
-        #fff;
+      background: #fff;
       border: 1px solid #eee2e4;
       border-radius: 10px;
-      padding: 34px 32px 26px;
+      padding: 42px 0 30px;
       overflow: hidden;
       position: relative;
     }
 
-    .home-hero-grid {
-      display: grid;
-      grid-template-columns: minmax(380px, .82fr) minmax(520px, 1fr);
-      gap: 40px;
-      align-items: center;
-      padding-top: 8px;
+    .home-intro {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 32px;
+      text-align: center;
     }
 
-    .home-copy {
-      display: grid;
-      align-content: center;
-      gap: 22px;
-      max-width: 560px;
-    }
-
-    .home-copy h1 {
+    .home-intro h1 {
       margin: 0;
-      font-size: clamp(34px, 3.1vw, 54px);
-      line-height: 1.08;
-      letter-spacing: -.8px;
+      font-size: clamp(32px, 3.1vw, 50px);
+      line-height: 1.12;
       font-weight: 900;
       color: #171a21;
     }
 
-    .home-copy p {
-      margin: 0;
+    .home-intro p {
+      max-width: 760px;
+      margin: 14px auto 0;
       color: #444b57;
-      line-height: 1.8;
-      font-size: 15px;
+      line-height: 1.75;
+      font-size: 14px;
       font-weight: 600;
     }
 
-    .home-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .home-primary,
-    .home-secondary {
-      min-width: 120px;
-      height: 40px;
-      border-radius: 9px;
-      font-weight: 900;
-      padding: 0 20px;
-    }
-
-    .home-primary {
-      border: 0;
-      background: var(--blue);
-      color: #fff;
-      box-shadow: 0 12px 22px rgba(199,0,26,.18);
-    }
-
-    .home-secondary {
-      border: 1px solid rgba(199,0,26,.56);
-      background: #fff;
-      color: #2f333b;
-    }
-
-    .home-visual {
-      min-height: 392px;
-      border: 5px solid #f1f1f1;
-      border-radius: 8px;
-      background: #eef0f3;
-      box-shadow: 0 26px 60px rgba(37, 42, 50, .12);
+    .home-carousel {
+      height: 610px;
+      margin-top: 22px;
       position: relative;
       overflow: hidden;
+      perspective: 1500px;
+      outline: none;
     }
 
-    .home-visual::after {
-      content: "";
+    .home-carousel-stage {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(10,14,20,.1), transparent 46%, rgba(199,0,26,.08));
-      pointer-events: none;
+      inset: 28px 0 130px;
+      transform-style: preserve-3d;
     }
 
-    .home-train-photo {
+    .home-carousel-card {
+      width: min(48vw, 760px);
+      height: 430px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      border: 0;
+      border-radius: 22px;
+      padding: 0;
+      background: #eef0f3;
+      overflow: hidden;
+      box-shadow: 0 30px 72px rgba(28, 32, 40, .16);
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      transition:
+        transform .72s cubic-bezier(.2, .75, .18, 1),
+        opacity .52s ease,
+        filter .52s ease,
+        box-shadow .52s ease;
+      will-change: transform, opacity;
+      cursor: pointer;
+    }
+
+    .home-carousel-card.is-active {
+      z-index: 5;
+      opacity: 1;
+      filter: none;
+      transform: translateX(-50%) translateZ(0) rotateY(0) scale(1);
+    }
+
+    .home-carousel-card.is-prev {
+      z-index: 4;
+      opacity: .58;
+      filter: saturate(.68) brightness(1.12);
+      transform: translateX(-108%) translateZ(-220px) rotateY(26deg) scale(.82);
+    }
+
+    .home-carousel-card.is-next {
+      z-index: 4;
+      opacity: .58;
+      filter: saturate(.68) brightness(1.12);
+      transform: translateX(8%) translateZ(-220px) rotateY(-26deg) scale(.82);
+    }
+
+    .home-carousel-card.is-far-prev {
+      z-index: 2;
+      opacity: .18;
+      filter: grayscale(.35) brightness(1.18);
+      transform: translateX(-151%) translateZ(-420px) rotateY(36deg) scale(.66);
+    }
+
+    .home-carousel-card.is-far-next {
+      z-index: 2;
+      opacity: .18;
+      filter: grayscale(.35) brightness(1.18);
+      transform: translateX(51%) translateZ(-420px) rotateY(-36deg) scale(.66);
+    }
+
+    .home-carousel-card.is-hidden {
+      z-index: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateZ(-600px) scale(.5);
+    }
+
+    .home-carousel-media {
       width: 100%;
-      height: 392px;
+      height: 100%;
       display: block;
       object-fit: cover;
-      object-position: center 54%;
-      filter: saturate(.88) contrast(1.03);
-      transition: transform .7s cubic-bezier(.2,.7,.2,1);
+      transition: transform .8s ease;
     }
 
-    .home-visual:hover .home-train-photo {
+    .home-carousel-card.is-active:hover .home-carousel-media {
       transform: scale(1.018);
     }
 
-    .rail-scene {
-      position: absolute;
-      inset: 0;
-      transform: rotateX(6deg) rotateZ(-1deg);
-      transform-origin: center bottom;
-    }
-
-    .rail-line {
-      position: absolute;
-      left: 26px;
-      right: -44px;
-      bottom: 76px;
-      height: 86px;
-      transform: skewX(-23deg);
-      background:
-        repeating-linear-gradient(90deg, #2c2d31 0 18px, #f7f7f7 18px 24px),
-        linear-gradient(#47484d, #1f2024);
-      border-radius: 6px;
-      box-shadow: 0 20px 24px rgba(20,25,34,.16);
-    }
-
-    .rail-line::after {
+    .home-carousel-card::after {
       content: "";
       position: absolute;
-      inset: 14px 0 auto;
-      height: 8px;
-      background: repeating-linear-gradient(90deg, #f5f5f5 0 36px, transparent 36px 56px);
-      opacity: .78;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.72);
+      pointer-events: none;
     }
 
-    .train-shell {
+    .home-card-shade {
       position: absolute;
-      left: 92px;
-      right: 30px;
-      top: 108px;
-      height: 132px;
-      border-radius: 76px 20px 18px 76px;
-      background:
-        linear-gradient(8deg, transparent 0 46%, rgba(199,0,26,.96) 46% 51%, transparent 51%),
-        linear-gradient(180deg, #fff 0%, #f9f7f7 52%, #dedee2 100%);
-      border: 1px solid rgba(135, 136, 142, .28);
-      box-shadow: 0 18px 24px rgba(47, 51, 60, .18), inset 0 10px 22px rgba(255,255,255,.92);
-      transform: perspective(900px) rotateY(-16deg) skewX(-8deg);
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(12, 15, 21, .72));
+      pointer-events: none;
     }
 
-    .train-nose {
+    .home-card-tag {
       position: absolute;
-      left: -22px;
-      top: 20px;
-      width: 138px;
-      height: 88px;
-      border-radius: 80px 40px 36px 80px;
-      background:
-        linear-gradient(132deg, rgba(199,0,26,.92) 0 8px, transparent 9px 100%),
-        linear-gradient(180deg, #fff, #e8e8eb);
-      border: 1px solid rgba(117, 119, 126, .25);
-    }
-
-    .train-window {
-      position: absolute;
-      left: 98px;
-      right: 34px;
-      top: 27px;
-      height: 38px;
-      border-radius: 28px 8px 8px 28px;
-      background: repeating-linear-gradient(90deg, #231f22 0 48px, #3f3033 48px 54px, #231f22 54px 72px);
-      box-shadow: inset 0 0 0 3px rgba(255,255,255,.22);
-      opacity: .94;
-    }
-
-    .train-redline {
-      position: absolute;
-      left: 78px;
-      right: 18px;
-      bottom: 34px;
-      height: 5px;
-      background: var(--blue);
-      border-radius: 999px;
-    }
-
-    .train-glow {
-      position: absolute;
-      left: 28%;
-      right: 8%;
-      top: 28px;
-      height: 46px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.78), rgba(255,255,255,0));
-      opacity: .74;
-      filter: blur(7px);
-    }
-
-    .home-feature-grid {
-      margin-top: 34px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .home-feature {
-      min-height: 132px;
-      border: 1px solid rgba(199,0,26,.42);
-      border-radius: 9px;
-      background: rgba(255,255,255,.78);
-      padding: 22px 24px;
-      display: grid;
-      align-content: start;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 12px 28px rgba(50, 32, 36, .05);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-    }
-
-    .home-feature:hover {
-      transform: translateY(-3px);
-      border-color: var(--blue);
-      box-shadow: 0 18px 34px rgba(199,0,26,.12);
-    }
-
-    .home-feature h3 {
-      margin: 0;
-      color: var(--blue);
-      font-size: 24px;
-      letter-spacing: -.2px;
-    }
-
-    .home-feature p {
-      margin: 0;
-      color: #5d6470;
-      line-height: 1.7;
+      left: 24px;
+      bottom: 22px;
+      z-index: 2;
+      color: #fff;
       font-size: 13px;
+      font-weight: 800;
+      text-shadow: 0 2px 14px rgba(0,0,0,.28);
+    }
+
+    .home-card-detail {
+      position: absolute;
+      right: 22px;
+      bottom: 20px;
+      z-index: 2;
+      min-width: 92px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 999px;
+      background: rgba(255,255,255,.9);
+      color: #252932;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+
+    .home-carousel-control {
+      width: 62px;
+      height: 62px;
+      position: absolute;
+      top: 230px;
+      z-index: 8;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 50%;
+      background: rgba(31, 34, 40, .62);
+      color: #fff;
+      font-size: 34px;
+      line-height: 1;
+      box-shadow: 0 12px 30px rgba(24, 26, 31, .16);
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .home-carousel-control:hover {
+      transform: scale(1.06);
+      background: var(--blue);
+    }
+
+    .home-carousel-control.prev { left: max(8%, calc(50% - 510px)); }
+    .home-carousel-control.next { right: max(8%, calc(50% - 510px)); }
+
+    .home-carousel-caption {
+      width: min(48vw, 760px);
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 18px;
+    }
+
+    .home-carousel-caption h2 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      color: #171a21;
+    }
+
+    .home-carousel-caption p {
+      margin: 0;
+      color: #626a77;
+      font-size: 14px;
+      line-height: 1.65;
       font-weight: 600;
     }
 
+    .home-carousel-count {
+      color: #a3a8b1;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
     @media (max-width: 1280px) {
-      .home-hero-grid { grid-template-columns: 1fr; }
-      .home-copy { max-width: none; }
-      .home-feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .home-carousel-card,
+      .home-carousel-caption { width: min(62vw, 720px); }
+      .home-carousel-card.is-prev { transform: translateX(-105%) translateZ(-220px) rotateY(24deg) scale(.78); }
+      .home-carousel-card.is-next { transform: translateX(5%) translateZ(-220px) rotateY(-24deg) scale(.78); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .home-carousel-card,
+      .home-carousel-media { transition: none; }
     }
 
     .workbench {
@@ -1573,37 +1564,39 @@
     */
     document.querySelector("#screen-home").innerHTML = `
       <section class="home-page">
-        <div class="home-hero-grid">
-          <div class="home-copy">
-            <div>
-              <h1>AI 驱动的轨道交通客室设计创新平台</h1>
-              <p>从屏幕捕捉、参考图和提示词出发，把 ComfyUI 工作流封装为可直接调用的设计 API，串联客室效果、CMF 材质、零部件生成、2D 生 3D 与报告交付。</p>
-            </div>
-            <div class="home-actions">
-              <button class="home-primary" data-screen="cabin">开始设计</button>
-            </div>
+        <header class="home-intro">
+          <h1>让客室设计，从灵感快速抵达方案</h1>
+          <p>在一个工作台中调用已发布的设计工作流，完成客室效果、CMF、零部件、三维模型与报告交付。</p>
+        </header>
+        <div class="home-carousel" id="homeCarousel" tabindex="0" aria-label="核心功能三维轮播">
+          <div class="home-carousel-stage">
+            <article class="home-carousel-card" data-carousel-index="0">
+              <img class="home-carousel-media" src="assets/cabin-home-hero.png" alt="客室效果生成示例" />
+              <span class="home-card-shade"></span><span class="home-card-tag">平面图 / 白模 / 屏幕捕捉</span><button class="home-card-detail" data-screen="cabin">进入模块</button>
+            </article>
+            <article class="home-carousel-card" data-carousel-index="1">
+              <img class="home-carousel-media" src="assets/cabin-home-hero.png" alt="CMF 材质方案示例" />
+              <span class="home-card-shade"></span><span class="home-card-tag">色彩 / 材料 / 表面纹理</span><button class="home-card-detail" data-screen="cmf">进入模块</button>
+            </article>
+            <article class="home-carousel-card" data-carousel-index="2">
+              <img class="home-carousel-media" src="assets/crrc-fuxing-train.jpg" alt="客室零部件生成示例" />
+              <span class="home-card-shade"></span><span class="home-card-tag">单图参考 / 多角度 / 局部修改</span><button class="home-card-detail" data-screen="part">进入模块</button>
+            </article>
+            <article class="home-carousel-card" data-carousel-index="3">
+              <img class="home-carousel-media" src="assets/cabin-home-hero.png" alt="二维图像生成三维模型示例" />
+              <span class="home-card-shade"></span><span class="home-card-tag">正视图 / 侧视图 / 俯视图</span><button class="home-card-detail" data-screen="model3d">进入模块</button>
+            </article>
+            <article class="home-carousel-card" data-carousel-index="4">
+              <img class="home-carousel-media" src="assets/crrc-fuxing-train.jpg" alt="自动报告生成示例" />
+              <span class="home-card-shade"></span><span class="home-card-tag">项目素材 / 方案说明 / Word 与 PPT</span><button class="home-card-detail" data-screen="report">进入模块</button>
+            </article>
           </div>
-          <div class="home-visual" aria-label="轨道交通智能设计主视觉">
-            <img class="home-train-photo" src="assets/crrc-fuxing-train.jpg" alt="复兴号智能动车组停靠站台" />
-          </div>
-        </div>
-        <div class="home-feature-grid">
-          <button class="home-feature" data-screen="cabin">
-            <h3>多模态输入识别</h3>
-            <p>支持平面图、白模截图、参考图和屏幕实时捕捉，把设计现场内容快速传入当前工作流。</p>
-          </button>
-          <button class="home-feature" data-screen="cmf">
-            <h3>智能方案生成</h3>
-            <p>覆盖客室效果、CMF 图案与零部件多角度生成，帮助设计师快速形成可比较方案。</p>
-          </button>
-          <button class="home-feature" data-screen="part">
-            <h3>工作流 API 调用</h3>
-            <p>通过 Docker 部署的 ComfyUI 服务调用已发布工作流，隐藏节点复杂度，保留模型与 LoRA 信息。</p>
-          </button>
-          <button class="home-feature" data-screen="report">
-            <h3>交付闭环管理</h3>
-            <p>生成结果可保存到资源库，并继续进入 2D 生 3D、自动报告和项目素材沉淀流程。</p>
-          </button>
+          <button class="home-carousel-control prev" type="button" aria-label="上一个功能">&#8592;</button>
+          <button class="home-carousel-control next" type="button" aria-label="下一个功能">&#8594;</button>
+          <footer class="home-carousel-caption" aria-live="polite">
+            <div><h2 id="homeCarouselTitle"></h2><p id="homeCarouselText"></p></div>
+            <span class="home-carousel-count" id="homeCarouselCount"></span>
+          </footer>
         </div>
       </section>`;
 
@@ -1869,6 +1862,56 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
     allButtons.forEach(btn => btn.addEventListener("click", () => activate(btn.dataset.screen)));
+
+    /* 首页只复用 Seed 式的透视翻页关系，不复刻其品牌内容与页面结构。 */
+    const homeCarousel = document.querySelector("#homeCarousel");
+    const homeCarouselCards = [...homeCarousel.querySelectorAll(".home-carousel-card")];
+    const homeCarouselData = [
+      ["客室效果生成", "上传平面图、白模截图或屏幕捕捉内容，快速生成完整客室方案。"],
+      ["CMF 生成器", "生成座椅面料、地板与墙板纹样，并进行参考图融合与材质沉淀。"],
+      ["客室零部件生成", "围绕座椅、扶手等部件生成多角度方案，支持遮罩局部修改。"],
+      ["2D 生 3D", "利用零部件多角度图生成三维模型数据，衔接后续工程应用。"],
+      ["自动报告生成", "汇总提示词、生成图、CMF 与项目素材，形成 Word 或 PPT 报告。"]
+    ];
+    let homeCarouselIndex = 0;
+
+    function renderHomeCarousel() {
+      homeCarouselCards.forEach((card, index) => {
+        let offset = index - homeCarouselIndex;
+        if (offset > 2) offset -= homeCarouselCards.length;
+        if (offset < -2) offset += homeCarouselCards.length;
+        const state = offset === 0 ? "is-active" : offset === -1 ? "is-prev" : offset === 1 ? "is-next" : offset === -2 ? "is-far-prev" : offset === 2 ? "is-far-next" : "is-hidden";
+        card.className = `home-carousel-card ${state}`;
+        card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+        card.querySelectorAll("video").forEach(video => {
+          if (offset === 0) video.play().catch(() => {});
+          else video.pause();
+        });
+      });
+      document.querySelector("#homeCarouselTitle").textContent = homeCarouselData[homeCarouselIndex][0];
+      document.querySelector("#homeCarouselText").textContent = homeCarouselData[homeCarouselIndex][1];
+      document.querySelector("#homeCarouselCount").textContent = `${String(homeCarouselIndex + 1).padStart(2, "0")} / ${String(homeCarouselCards.length).padStart(2, "0")}`;
+    }
+
+    function moveHomeCarousel(step) {
+      homeCarouselIndex = (homeCarouselIndex + step + homeCarouselCards.length) % homeCarouselCards.length;
+      renderHomeCarousel();
+    }
+
+    homeCarousel.querySelector(".prev").addEventListener("click", () => moveHomeCarousel(-1));
+    homeCarousel.querySelector(".next").addEventListener("click", () => moveHomeCarousel(1));
+    homeCarouselCards.forEach((card, index) => card.addEventListener("click", event => {
+      if (event.target.closest("[data-screen]")) return;
+      if (index !== homeCarouselIndex) {
+        homeCarouselIndex = index;
+        renderHomeCarousel();
+      }
+    }));
+    homeCarousel.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") moveHomeCarousel(-1);
+      if (event.key === "ArrowRight") moveHomeCarousel(1);
+    });
+    renderHomeCarousel();
 
     document.querySelectorAll(".capture-trigger").forEach(btn => btn.addEventListener("click", () => document.querySelector("#captureWindow").classList.remove("hidden")));
     document.querySelector("#floatAi").addEventListener("click", () => document.querySelector("#assistantDrawer").classList.toggle("hidden"));
