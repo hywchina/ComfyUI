@@ -213,5 +213,7 @@
         "3D\u6a21\u578b",
         "\u56fe\u751f3D\u6a21\u578b"
     ],
-    "Comfy.RightSidePanel.IsOpen": false
+    "Comfy.RightSidePanel.IsOpen": true,
+    "Comfy.VueNodes.Enabled": true,
+    "Comfy.Queue.History.Expanded": true
 }
