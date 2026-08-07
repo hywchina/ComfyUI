@@ -4,25 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <title>Klein Canvas · ComfyUI</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ccff57'/%3E%3Cpath d='M8 9l8-5 8 5v14l-8 5-8-5V9zm4 3 8 8m0-8-8 8' fill='none' stroke='%2311140b' stroke-width='2'/%3E%3C/svg%3E">
+    <title>Workflow Studio · ComfyUI</title>
+    <meta name="description" content="从 ComfyUI API 工作流自动生成参数页面并运行本地任务">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23b8f448'/%3E%3Cpath d='M9 10h6v6H9zm8 6h6v6h-6zM9 22h6v-6' fill='none' stroke='%230d1208' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
-
     <header class="topbar">
-      <a class="brand" href="#" aria-label="Klein Canvas 首页">
-        <span class="brand-mark">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M7 8.5 16 3l9 5.5v15L16 29l-9-5.5v-15Z"></path>
-            <path d="m11 11 10 10M21 11 11 21"></path>
-          </svg>
-        </span>
+      <a class="brand" href="#" aria-label="Workflow Studio 首页">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
         <span>
-          <strong>Klein Canvas</strong>
-          <small>ComfyUI GENERATION STUDIO</small>
+          <strong>Workflow Studio</strong>
+          <small>COMFYUI WORKFLOW CONSOLE</small>
         </span>
       </a>
       <div class="server-state" id="serverState">
@@ -31,121 +24,51 @@
       </div>
     </header>
 
-    <main class="workspace">
-      <section class="control-panel">
-        <div class="panel-heading">
+    <main class="studio-layout">
+      <aside class="workflow-sidebar">
+        <div class="sidebar-heading">
           <div>
-            <p class="eyebrow">FLUX.2 KLEIN 9B</p>
-            <h1>让想象成为画面</h1>
+            <p class="eyebrow">WORKFLOWS</p>
+            <h1>工作流</h1>
           </div>
-          <button class="icon-button" id="resetButton" type="button" title="恢复默认参数">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4v6h6M20 20v-6h-6"></path>
-              <path d="M5.1 15a8 8 0 0 0 13.2 2.2L20 14M4 10l1.7-3.2A8 8 0 0 1 18.9 9"></path>
-            </svg>
-          </button>
+          <span class="count-badge" id="workflowCount">0</span>
         </div>
+        <label class="search-field">
+          <span class="visually-hidden">搜索工作流</span>
+          <input id="workflowSearch" type="search" placeholder="搜索工作流…" autocomplete="off">
+        </label>
+        <nav class="workflow-list" id="workflowList" aria-label="工作流列表">
+          <p class="list-empty">正在读取工作流…</p>
+        </nav>
+        <div class="sidebar-note">
+          <span>自动发现</span>
+          <p>API 工作流会自动生成参数面板，无需单独编写页面。</p>
+        </div>
+      </aside>
 
-        <form id="generationForm">
-          <label class="field">
-            <span class="field-label">
-              <span>画面描述</span>
-              <span class="field-hint" id="promptCount">0 字符</span>
-            </span>
-            <textarea id="positivePrompt" rows="7" required></textarea>
-          </label>
-
-          <label class="field">
-            <span class="field-label">
-              <span>负向提示词</span>
-              <span class="field-hint">可选</span>
-            </span>
-            <textarea id="negativePrompt" rows="3"></textarea>
-          </label>
-
-          <div class="section-label">画布设置</div>
-          <div class="field-grid three">
-            <label class="field compact">
-              <span class="field-label">宽度</span>
-              <input id="width" type="number" min="256" max="2048" step="64" required>
-            </label>
-            <label class="field compact">
-              <span class="field-label">高度</span>
-              <input id="height" type="number" min="256" max="2048" step="64" required>
-            </label>
-            <label class="field compact">
-              <span class="field-label">数量</span>
-              <input id="batchSize" type="number" min="1" max="4" step="1" required>
-            </label>
+      <section class="parameter-panel">
+        <header class="panel-toolbar">
+          <div class="workflow-title">
+            <p class="eyebrow">PARAMETERS</p>
+            <h2 id="workflowName">选择一个工作流</h2>
+            <p id="workflowMeta">从左侧列表开始</p>
           </div>
-
-          <div class="aspect-buttons" aria-label="常用尺寸">
-            <button type="button" data-size="1024x1024" class="active">1:1</button>
-            <button type="button" data-size="1344x768">16:9</button>
-            <button type="button" data-size="768x1344">9:16</button>
-            <button type="button" data-size="1216x832">3:2</button>
-          </div>
-
-          <div class="section-label">生成参数</div>
-          <div class="field-grid two">
-            <label class="field compact seed-field">
-              <span class="field-label">随机种子</span>
-              <span class="input-action">
-                <input id="seed" type="number" min="0" max="9007199254740991" required>
-                <button id="randomSeedButton" type="button" title="生成随机种子">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"></path>
-                  </svg>
-                </button>
-              </span>
+          <div class="toolbar-actions">
+            <label class="advanced-toggle">
+              <input id="showAdvanced" type="checkbox">
+              <span>全部参数</span>
             </label>
-            <label class="field compact">
-              <span class="field-label">文件名前缀</span>
-              <input id="filenamePrefix" type="text" required>
-            </label>
+            <button class="reset-button" id="resetButton" type="button">重置</button>
           </div>
+        </header>
 
-          <div class="slider-row">
-            <label for="steps">采样步数</label>
-            <input id="steps" type="range" min="1" max="30" step="1">
-            <output id="stepsValue" for="steps"></output>
-          </div>
-          <div class="slider-row">
-            <label for="cfg">提示词引导</label>
-            <input id="cfg" type="range" min="0" max="10" step="0.1">
-            <output id="cfgValue" for="cfg"></output>
-          </div>
-
-          <details class="advanced">
-            <summary>高级设置</summary>
-            <div class="field-grid two advanced-fields">
-              <label class="field compact">
-                <span class="field-label">降噪强度</span>
-                <input id="denoise" type="number" min="0" max="1" step="0.01">
-              </label>
-              <label class="field compact">
-                <span class="field-label">模型偏移</span>
-                <input id="shift" type="number" min="0" max="20" step="0.1">
-              </label>
-              <label class="field compact">
-                <span class="field-label">采样器</span>
-                <input id="samplerName" type="text">
-              </label>
-              <label class="field compact">
-                <span class="field-label">调度器</span>
-                <input id="scheduler" type="text">
-              </label>
-            </div>
-          </details>
-
+        <form id="parameterForm" class="parameter-form">
+          <div class="empty-parameters" id="emptyParameters">请选择工作流</div>
+          <div class="parameter-groups" id="parameterGroups" hidden></div>
           <div class="form-actions">
-            <button class="run-button" id="runButton" type="submit">
-              <span class="run-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="m8 5 11 7-11 7V5Z"></path>
-                </svg>
-              </span>
-              <span id="runButtonText">开始生成</span>
+            <button class="run-button" id="runButton" type="submit" disabled>
+              <span class="run-symbol" aria-hidden="true"></span>
+              <span id="runButtonText">运行工作流</span>
             </button>
             <button class="cancel-button" id="cancelButton" type="button" hidden>取消任务</button>
           </div>
@@ -153,39 +76,29 @@
       </section>
 
       <section class="result-panel">
-        <div class="result-toolbar">
+        <header class="result-toolbar">
           <div>
             <p class="eyebrow">OUTPUT</p>
-            <h2>生成结果</h2>
+            <h2>执行结果</h2>
           </div>
           <div class="job-id" id="jobId" hidden>
-            <span>任务</span>
+            <span>任务 ID</span>
             <code id="jobIdValue"></code>
           </div>
-        </div>
+        </header>
 
         <div class="result-stage" id="resultStage">
           <div class="empty-state" id="emptyState">
-            <div class="empty-visual">
-              <svg viewBox="0 0 84 84" aria-hidden="true">
-                <rect x="12" y="12" width="60" height="60" rx="18"></rect>
-                <circle cx="31" cy="32" r="5"></circle>
-                <path d="m20 58 15-14 10 9 8-7 11 12"></path>
-              </svg>
-            </div>
-            <h3>你的作品将在这里出现</h3>
-            <p>填写左侧参数并开始生成，处理期间可以实时查看任务状态。</p>
+            <div class="empty-visual" aria-hidden="true"><span></span></div>
+            <h3>等待运行</h3>
+            <p>选择工作流、调整参数并开始运行，图片、视频、音频和文本结果都会显示在这里。</p>
           </div>
 
           <div class="progress-state" id="progressState" hidden>
-            <div class="orbital-loader">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <p class="progress-label" id="progressLabel">正在提交任务</p>
-            <h3 id="progressTitle">连接 ComfyUI</h3>
-            <p id="progressDetail">模型首次加载可能需要一些时间</p>
+            <div class="orbital-loader" aria-hidden="true"><span></span><span></span><span></span></div>
+            <p class="progress-label" id="progressLabel">PREPARING</p>
+            <h3 id="progressTitle">正在准备工作流</h3>
+            <p id="progressDetail">处理输入参数</p>
             <div class="progress-meta">
               <span id="elapsedTime">00:00</span>
               <span class="meta-divider"></span>
@@ -195,18 +108,18 @@
 
           <div class="error-state" id="errorState" hidden>
             <div class="error-icon">!</div>
-            <h3>生成遇到问题</h3>
+            <h3>工作流执行失败</h3>
             <p id="errorMessage"></p>
-            <button type="button" id="retryButton">重新尝试</button>
+            <button type="button" id="retryButton">重新运行</button>
           </div>
 
-          <div class="image-grid" id="imageGrid" hidden></div>
+          <div class="output-grid" id="outputGrid" hidden></div>
         </div>
 
-        <div class="result-footer">
-          <span><i></i> 图片由本机 ComfyUI 生成</span>
-          <span id="resultSummary">等待创作</span>
-        </div>
+        <footer class="result-footer">
+          <span><i></i> 本地 ComfyUI</span>
+          <span id="resultSummary">等待运行</span>
+        </footer>
       </section>
     </main>
 
