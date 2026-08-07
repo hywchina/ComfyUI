@@ -1,0 +1,167 @@
+{
+  "276": {
+    "inputs": {
+      "anything": [
+        "277",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "277": {
+    "inputs": {
+      "preset": "clip2-flux/clip2-flux2-klein.toml",
+      "ckpt_name": "None",
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "unet_Weight_Dtype": "default",
+      "clip_type": "flux2",
+      "clip1": "qwen_3_8b_fp8mixed.safetensors",
+      "clip2": "None",
+      "guidance": 3.5,
+      "clip3": "None",
+      "clip4": "None",
+      "vae": "flux2-vae.safetensors",
+      "lora": "None",
+      "lora_strength": 1,
+      "width": 1024,
+      "height": 1024,
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "normal",
+      "pos": "beautiful detailed glow,a girl",
+      "neg": "worst quality, low quality"
+    },
+    "class_type": "sum_load_adv",
+    "_meta": {
+      "title": "sum_高级加载"
+    }
+  },
+  "355": {
+    "inputs": {
+      "mask_opacity": 1,
+      "update": null,
+      "image": [
+        "359",
+        1
+      ]
+    },
+    "class_type": "view_Mask_And_Img",
+    "_meta": {
+      "title": "view_遮罩和图像"
+    }
+  },
+  "359": {
+    "inputs": {
+      "seed": 396,
+      "denoise": 1,
+      "image_output": "Preview",
+      "context": [
+        "363",
+        0
+      ]
+    },
+    "class_type": "sum_Ksampler",
+    "_meta": {
+      "title": "sum_采样器"
+    }
+  },
+  "360": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "upscale_method": "bilinear",
+      "keep_proportion": "resize",
+      "pad_color": "black",
+      "crop_position": "center",
+      "divisible_by": 16,
+      "pad_mask_remove": true,
+      "image": [
+        "362",
+        1
+      ],
+      "get_image_size": [
+        "362",
+        1
+      ]
+    },
+    "class_type": "Image_Resize_sum",
+    "_meta": {
+      "title": "Image_调整尺寸_总"
+    }
+  },
+  "362": {
+    "inputs": {
+      "brush_data": "brush:square:4:1:0,0,0:11.85036923974299,202.76163091513266;168.7392429094346,202.76163091513266;168.7392429094346,334.71855322587686;11.85036923974299,334.71855322587686;11.85036923974299,202.76163091513266|brush:square:4:1:0,0,0:169.347339319007,331.6780711449835;169.347339319007,331.6780711449835;169.347339319007,331.6780711449835;169.347339319007,331.6780711449835;169.347339319007,331.6780711449835|brush:square:4:1:0,255,0:454.5446853118935,247.15237797210287;548.799628795622,247.15237797210287;548.799628795622,309.1782167815259;454.5446853118935,309.1782167815259;454.5446853118935,247.15237797210287",
+      "brush_size": 4,
+      "image_base64": "__APT_EASYMARK_BASE64__:362",
+      "image_width": 596,
+      "image_height": 335
+    },
+    "class_type": "IO_EasyMark",
+    "_meta": {
+      "title": "IO_简易打标记"
+    }
+  },
+  "363": {
+    "inputs": {
+      "prompt": "黑色部分替换成懒人沙发\n绿色部分替换成真的小狗",
+      "img1_strength": 1,
+      "img2_strength": 1,
+      "img3_strength": 1,
+      "img4_strength": 1,
+      "img5_strength": 1,
+      "main_prompt_ratio": 0.5,
+      "ref_latent_img1": [
+        "360",
+        0
+      ],
+      "latent_image": [
+        "360",
+        0
+      ]
+    },
+    "class_type": "sum_stack_flux2_Klein",
+    "_meta": {
+      "title": "sum_Flux2Klein堆"
+    }
+  },
+  "366": {
+    "inputs": {
+      "filename_prefix": "Flux2-Klein",
+      "images": [
+        "360",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "367": {
+    "inputs": {
+      "compare_view": {
+        "__value__": [
+          "",
+          ""
+        ]
+      },
+      "image_a": [
+        "360",
+        0
+      ],
+      "image_b": [
+        "359",
+        1
+      ]
+    },
+    "class_type": "ImageCompare",
+    "_meta": {
+      "title": "图像对比"
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "343": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "344": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "355",
+        0
+      ],
+      "positive": [
+        "353",
+        0
+      ],
+      "negative": [
+        "354",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "345": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "346": {
+    "inputs": {
+      "width": [
+        "358",
+        0
+      ],
+      "height": [
+        "359",
+        0
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "空Latent图像（Flux2）"
+    }
+  },
+  "347": {
+    "inputs": {
+      "noise_seed": 437576720848776
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "348": {
+    "inputs": {
+      "noise": [
+        "347",
+        0
+      ],
+      "guider": [
+        "344",
+        0
+      ],
+      "sampler": [
+        "345",
+        0
+      ],
+      "sigmas": [
+        "352",
+        0
+      ],
+      "latent_image": [
+        "346",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "349": {
+    "inputs": {
+      "samples": [
+        "348",
+        0
+      ],
+      "vae": [
+        "351",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "350": {
+    "inputs": {
+      "mode": "always",
+      "volume": 0.2,
+      "file": "notify.mp3",
+      "any": [
+        "349",
+        0
+      ]
+    },
+    "class_type": "PlaySound|pysssss",
+    "_meta": {
+      "title": "PlaySound 🐍"
+    }
+  },
+  "351": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "352": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "358",
+        0
+      ],
+      "height": [
+        "359",
+        0
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2调度器"
+    }
+  },
+  "353": {
+    "inputs": {
+      "text": [
+        "357",
+        0
+      ],
+      "clip": [
+        "343",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "354": {
+    "inputs": {
+      "conditioning": [
+        "353",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "355": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "356": {
+    "inputs": {
+      "filename_prefix": "Flux2-Klein",
+      "images": [
+        "349",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "357": {
+    "inputs": {
+      "value": "四方连续无缝面料图案，深墨绿色布面底色，米白色斜向交叉格纹，细红色点缀线条，复古学院风，棉麻布料质感，纹理清晰，规整对称，适合西装、桌布印花"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "358": {
+    "inputs": {
+      "value": 2048
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "359": {
+    "inputs": {
+      "value": 1080
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Height"
+    }
+  }
+}

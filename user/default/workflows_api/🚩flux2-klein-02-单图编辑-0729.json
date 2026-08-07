@@ -1,0 +1,314 @@
+{
+  "384": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "391",
+        0
+      ],
+      "positive": [
+        "396",
+        0
+      ],
+      "negative": [
+        "397",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "385": {
+    "inputs": {
+      "noise": [
+        "398",
+        0
+      ],
+      "guider": [
+        "384",
+        0
+      ],
+      "sampler": [
+        "399",
+        0
+      ],
+      "sigmas": [
+        "400",
+        0
+      ],
+      "latent_image": [
+        "388",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "386": {
+    "inputs": {
+      "mode": "always",
+      "volume": 0.2,
+      "file": "notify.mp3",
+      "any": [
+        "389",
+        0
+      ]
+    },
+    "class_type": "PlaySound|pysssss",
+    "_meta": {
+      "title": "PlaySound 🐍"
+    }
+  },
+  "387": {
+    "inputs": {
+      "pixels": [
+        "390",
+        0
+      ],
+      "vae": [
+        "393",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "388": {
+    "inputs": {
+      "width": [
+        "390",
+        3
+      ],
+      "height": [
+        "390",
+        4
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "空Latent图像（Flux2）"
+    }
+  },
+  "389": {
+    "inputs": {
+      "samples": [
+        "385",
+        0
+      ],
+      "vae": [
+        "393",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "390": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "crop",
+      "method": "lanczos",
+      "round_to_multiple": "16",
+      "scale_to_side": "longest",
+      "scale_to_length": 1536,
+      "background_color": "#000000",
+      "image": [
+        "403",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "图层工具：按宽高比缩放 V2"
+    }
+  },
+  "391": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "392": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "393": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "394": {
+    "inputs": {
+      "conditioning": [
+        "395",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "395": {
+    "inputs": {
+      "text": [
+        "404",
+        0
+      ],
+      "clip": [
+        "392",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "396": {
+    "inputs": {
+      "conditioning": [
+        "395",
+        0
+      ],
+      "latent": [
+        "387",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "397": {
+    "inputs": {
+      "conditioning": [
+        "394",
+        0
+      ],
+      "latent": [
+        "387",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "398": {
+    "inputs": {
+      "noise_seed": 500161323353177
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "399": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "400": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "390",
+        3
+      ],
+      "height": [
+        "390",
+        4
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2调度器"
+    }
+  },
+  "402": {
+    "inputs": {
+      "filename_prefix": "Flux2-Klein",
+      "images": [
+        "389",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "403": {
+    "inputs": {
+      "image": "地铁车辆客室无座椅图.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "404": {
+    "inputs": {
+      "value": "生成一张现代地铁车辆内部的精美高清效果图。\n\n## 核心结构要求\n1.  **整体布局**：标准地铁车厢结构，包含左侧车窗、右侧车窗、中央通道、滑动车门。\n2.  **座椅限定（关键）**：仅在**车门与车门之间**的侧壁安装连续的**横向长条座椅**；**车门区域（含门口通道）严禁放置任何座椅**，不得遮挡车门开关路径。\n3.  **扶手配置**：在侧壁座椅上方、车厢顶部安装垂直金属扶手杆及横向扶手杆，分布均匀。\n\n## 画面风格\n*   **画质**：超写实渲染，8K分辨率，细节清晰，无噪点。\n*   **光影**：明亮柔和的室内灯光，车顶LED灯带照明，高动态范围。\n*   **色调**：简约白色为主，浅灰色地板，金属质感银灰色扶手与座椅边框。\n*   **氛围**：空荡整洁，未来感现代设计，工业风，景深效果。"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "405": {
+    "inputs": {
+      "compare_view": {
+        "__value__": [
+          "",
+          ""
+        ]
+      },
+      "image_a": [
+        "403",
+        0
+      ],
+      "image_b": [
+        "389",
+        0
+      ]
+    },
+    "class_type": "ImageCompare",
+    "_meta": {
+      "title": "图像对比"
+    }
+  }
+}

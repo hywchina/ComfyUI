@@ -1,0 +1,150 @@
+{
+  "273": {
+    "inputs": {
+      "brush_data": "brush:box:8:1:255,0,0:62.48003651038944,253.6635995679735;607.3438862642396,253.6635995679735;607.3438862642396,583.0865850927826;62.48003651038944,583.0865850927826;62.48003651038944,253.6635995679735|brush:box:8:1:0,0,255:467.3817495566216,390.044519171234;987.4403545062679,390.044519171234;987.4403545062679,757.6252715766163;467.3817495566216,757.6252715766163;467.3817495566216,390.044519171234",
+      "brush_size": 8,
+      "image_base64": "__APT_EASYMARK_BASE64__:273",
+      "image_width": 1024,
+      "image_height": 1024
+    },
+    "class_type": "IO_EasyMark",
+    "_meta": {
+      "title": "IO_简易打标记"
+    }
+  },
+  "276": {
+    "inputs": {
+      "anything": [
+        "277",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "277": {
+    "inputs": {
+      "preset": "clip2-flux/clip2-flux2-klein.toml",
+      "ckpt_name": "None",
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "unet_Weight_Dtype": "default",
+      "clip_type": "flux2",
+      "clip1": "qwen_3_8b_fp8mixed.safetensors",
+      "clip2": "None",
+      "guidance": 3.5,
+      "clip3": "None",
+      "clip4": "None",
+      "vae": "flux2-vae.safetensors",
+      "lora": "None",
+      "lora_strength": 1,
+      "width": 1024,
+      "height": 1024,
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "normal",
+      "pos": "beautiful detailed glow,a girl",
+      "neg": "worst quality, low quality"
+    },
+    "class_type": "sum_load_adv",
+    "_meta": {
+      "title": "sum_高级加载"
+    }
+  },
+  "291": {
+    "inputs": {
+      "prompt": "红框内改成直升飞机，蓝框内是超人",
+      "img1_strength": 1,
+      "img2_strength": 1,
+      "img3_strength": 1,
+      "img4_strength": 1,
+      "img5_strength": 1,
+      "main_prompt_ratio": 0.5,
+      "ref_latent_img1": [
+        "326",
+        0
+      ],
+      "latent_image": [
+        "326",
+        0
+      ]
+    },
+    "class_type": "sum_stack_flux2_Klein",
+    "_meta": {
+      "title": "sum_Flux2Klein堆"
+    }
+  },
+  "293": {
+    "inputs": {
+      "seed": 396,
+      "denoise": 1,
+      "image_output": "Preview",
+      "context": [
+        "291",
+        0
+      ]
+    },
+    "class_type": "sum_Ksampler",
+    "_meta": {
+      "title": "sum_采样器"
+    }
+  },
+  "326": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "upscale_method": "bilinear",
+      "keep_proportion": "resize",
+      "pad_color": "black",
+      "crop_position": "center",
+      "divisible_by": 16,
+      "pad_mask_remove": true,
+      "image": [
+        "273",
+        1
+      ],
+      "get_image_size": [
+        "273",
+        1
+      ]
+    },
+    "class_type": "Image_Resize_sum",
+    "_meta": {
+      "title": "Image_调整尺寸_总"
+    }
+  },
+  "355": {
+    "inputs": {
+      "mask_opacity": 1,
+      "update": "queue"
+    },
+    "class_type": "view_Mask_And_Img",
+    "_meta": {
+      "title": "view_遮罩和图像"
+    }
+  },
+  "356": {
+    "inputs": {
+      "compare_view": {
+        "__value__": [
+          "",
+          ""
+        ]
+      },
+      "image_a": [
+        "326",
+        0
+      ],
+      "image_b": [
+        "293",
+        1
+      ]
+    },
+    "class_type": "ImageCompare",
+    "_meta": {
+      "title": "图像对比"
+    }
+  }
+}

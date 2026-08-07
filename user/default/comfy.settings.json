@@ -208,12 +208,12 @@
         }
     },
     "Comfy.Minimap.Visible": false,
-    "Comfy.Templates.SelectedUseCases": [
-        "3D",
-        "3D\u6a21\u578b",
-        "\u56fe\u751f3D\u6a21\u578b"
-    ],
-    "Comfy.RightSidePanel.IsOpen": true,
+    "Comfy.Templates.SelectedUseCases": [],
+    "Comfy.RightSidePanel.IsOpen": false,
     "Comfy.VueNodes.Enabled": true,
-    "Comfy.Queue.History.Expanded": true
+    "Comfy.Queue.History.Expanded": false,
+    "Comfy.Templates.SelectedRunsOn": [
+        "ComfyUI"
+    ],
+    "Comfy.Templates.SortBy": "newest"
 }

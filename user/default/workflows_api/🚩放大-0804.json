@@ -1,0 +1,99 @@
+{
+  "87": {
+    "inputs": {
+      "image": "EMR_Seats.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "88": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "letterbox",
+      "method": "lanczos",
+      "round_to_multiple": "8",
+      "scale_to_side": "None",
+      "scale_to_length": 1024,
+      "background_color": "#000000",
+      "image": [
+        "87",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "图层工具：按宽高比缩放 V2"
+    }
+  },
+  "89": {
+    "inputs": {
+      "prompt": "high quality portrait, detailed face, sharp features",
+      "upscale_factor": 4,
+      "seed": 82016038556410,
+      "model_name": "HYPIR_sd2",
+      "base_model_path": "stable-diffusion-2-1-base",
+      "model_t": 200,
+      "coeff_t": 100,
+      "lora_rank": 256,
+      "patch_size": 512,
+      "encode_patch_size": 512,
+      "decode_patch_size": 512,
+      "batch_size": 1,
+      "unload_model_after": false,
+      "image": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "HYPIRAdvancedRestoration",
+    "_meta": {
+      "title": "HYPIR Advanced Restoration"
+    }
+  },
+  "90": {
+    "inputs": {
+      "images": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "91": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ygjye_00003_.png&type=temp&subfolder=&rand=0.8140152744699732"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ygjye_00004_.png&type=temp&subfolder=&rand=0.26844763750805956"
+          }
+        ]
+      },
+      "image_a": [
+        "87",
+        0
+      ],
+      "image_b": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  }
+}

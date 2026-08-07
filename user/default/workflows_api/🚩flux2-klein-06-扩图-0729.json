@@ -1,0 +1,396 @@
+{
+  "344": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "363",
+        0
+      ],
+      "positive": [
+        "352",
+        0
+      ],
+      "negative": [
+        "353",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "345": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "346": {
+    "inputs": {
+      "noise_seed": 315426460614194
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "347": {
+    "inputs": {
+      "mode": "always",
+      "volume": 0.2,
+      "file": "notify.mp3",
+      "any": [
+        "357",
+        0
+      ]
+    },
+    "class_type": "PlaySound|pysssss",
+    "_meta": {
+      "title": "PlaySound 🐍"
+    }
+  },
+  "348": {
+    "inputs": {
+      "text": [
+        "367",
+        0
+      ],
+      "clip": [
+        "364",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "349": {
+    "inputs": {
+      "conditioning": [
+        "348",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "350": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "359",
+        0
+      ],
+      "height": [
+        "359",
+        1
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2调度器"
+    }
+  },
+  "351": {
+    "inputs": {
+      "pixels": [
+        "362",
+        0
+      ],
+      "vae": [
+        "365",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "352": {
+    "inputs": {
+      "conditioning": [
+        "348",
+        0
+      ],
+      "latent": [
+        "351",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "353": {
+    "inputs": {
+      "conditioning": [
+        "349",
+        0
+      ],
+      "latent": [
+        "351",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "354": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "crop",
+      "method": "lanczos",
+      "round_to_multiple": "16",
+      "scale_to_side": "longest",
+      "scale_to_length": 1536,
+      "background_color": "#000000",
+      "image": [
+        "369",
+        0
+      ],
+      "mask": [
+        "369",
+        1
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "图层工具：按宽高比缩放 V2"
+    }
+  },
+  "356": {
+    "inputs": {
+      "width": [
+        "359",
+        0
+      ],
+      "height": [
+        "359",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "空Latent图像（Flux2）"
+    }
+  },
+  "357": {
+    "inputs": {
+      "samples": [
+        "358",
+        0
+      ],
+      "vae": [
+        "365",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "358": {
+    "inputs": {
+      "noise": [
+        "346",
+        0
+      ],
+      "guider": [
+        "344",
+        0
+      ],
+      "sampler": [
+        "345",
+        0
+      ],
+      "sigmas": [
+        "350",
+        0
+      ],
+      "latent_image": [
+        "356",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "359": {
+    "inputs": {
+      "image": [
+        "368",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "获取图像尺寸"
+    }
+  },
+  "360": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.4000000000000001,
+      "multithread": true,
+      "image_ref": [
+        "354",
+        0
+      ],
+      "image_target": [
+        "357",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "Color Match"
+    }
+  },
+  "361": {
+    "inputs": {
+      "images": [
+        "362",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "362": {
+    "inputs": {
+      "color": "255, 0, 0",
+      "device": "cpu",
+      "image": [
+        "368",
+        0
+      ],
+      "mask": [
+        "368",
+        1
+      ]
+    },
+    "class_type": "DrawMaskOnImage",
+    "_meta": {
+      "title": "Draw Mask On Image"
+    }
+  },
+  "363": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "364": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "365": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "366": {
+    "inputs": {
+      "filename_prefix": "Flux2-Klein",
+      "images": [
+        "360",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "367": {
+    "inputs": {
+      "value": "删除红色部分，并参考图片中内容进行扩展"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "368": {
+    "inputs": {
+      "left": 504,
+      "top": 0,
+      "right": 504,
+      "bottom": 0,
+      "feathering": 40,
+      "image": [
+        "354",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "外补画板"
+    }
+  },
+  "369": {
+    "inputs": {
+      "image": "3460.jpg_wh860.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "371": {
+    "inputs": {
+      "compare_view": {
+        "__value__": [
+          "",
+          ""
+        ]
+      },
+      "image_a": [
+        "362",
+        0
+      ],
+      "image_b": [
+        "360",
+        0
+      ]
+    },
+    "class_type": "ImageCompare",
+    "_meta": {
+      "title": "图像对比"
+    }
+  }
+}

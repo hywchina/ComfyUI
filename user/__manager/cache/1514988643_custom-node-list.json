@@ -11,6 +11,17 @@
             "title": "ComfyUI-SimpleFloatSlider"
         },
         {
+            "author": "uron83",
+            "description": "Visual camera-angle LoRA control and smart aspect-ratio resizing for Qwen image editing in ComfyUI.",
+            "files": [
+                "https://github.com/uron83/ComfyUI-Qwen-FrameKit"
+            ],
+            "id": "qwen-framekit",
+            "install_type": "git-clone",
+            "reference": "https://github.com/uron83/ComfyUI-Qwen-FrameKit",
+            "title": "ComfyUI-Qwen-FrameKit"
+        },
+        {
             "author": "18yz153",
             "description": "A visual state machine for consistent character generation. It intelligently maintains character identity, outfits, and locations across multiple generations using LLM-driven state management.",
             "files": [
@@ -60991,6 +61002,16 @@
             "install_type": "git-clone",
             "reference": "https://github.com/MengYe-Z/ComfyUI-MultiPointWhiteBalance",
             "title": "ComfyUI MultiPoint White Balance"
+        },
+        {
+            "author": "DumiFlex",
+            "description": "Modular procedural prompt generation \u2014 wildcards, fixed values, combines, derivations and constraints resolved in a context pipeline, with a manager UI for a reusable module library.",
+            "files": [
+                "https://github.com/DumiFlex/ComfyUI-Wildcard-Pipeline"
+            ],
+            "install_type": "git-clone",
+            "reference": "https://github.com/DumiFlex/ComfyUI-Wildcard-Pipeline",
+            "title": "Wildcard Pipeline"
         }
     ]
 }

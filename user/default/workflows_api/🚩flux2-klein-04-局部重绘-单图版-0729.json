@@ -1,0 +1,432 @@
+{
+  "343": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "358",
+        0
+      ],
+      "positive": [
+        "350",
+        0
+      ],
+      "negative": [
+        "350",
+        1
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "344": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "345": {
+    "inputs": {
+      "noise_seed": 747524662011977
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "346": {
+    "inputs": {
+      "noise": [
+        "345",
+        0
+      ],
+      "guider": [
+        "343",
+        0
+      ],
+      "sampler": [
+        "344",
+        0
+      ],
+      "sigmas": [
+        "349",
+        0
+      ],
+      "latent_image": [
+        "350",
+        2
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "347": {
+    "inputs": {
+      "mode": "always",
+      "volume": 0.2,
+      "file": "notify.mp3",
+      "any": [
+        "353",
+        0
+      ]
+    },
+    "class_type": "PlaySound|pysssss",
+    "_meta": {
+      "title": "PlaySound 🐍"
+    }
+  },
+  "348": {
+    "inputs": {
+      "conditioning": [
+        "365",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "349": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "357",
+        3
+      ],
+      "height": [
+        "357",
+        4
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2调度器"
+    }
+  },
+  "350": {
+    "inputs": {
+      "noise_mask": true,
+      "positive": [
+        "351",
+        0
+      ],
+      "negative": [
+        "352",
+        0
+      ],
+      "vae": [
+        "360",
+        0
+      ],
+      "pixels": [
+        "357",
+        0
+      ],
+      "mask": [
+        "367",
+        0
+      ]
+    },
+    "class_type": "InpaintModelConditioning",
+    "_meta": {
+      "title": "内补模型条件"
+    }
+  },
+  "351": {
+    "inputs": {
+      "conditioning": [
+        "365",
+        0
+      ],
+      "latent": [
+        "362",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "352": {
+    "inputs": {
+      "conditioning": [
+        "348",
+        0
+      ],
+      "latent": [
+        "362",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "353": {
+    "inputs": {
+      "samples": [
+        "346",
+        0
+      ],
+      "vae": [
+        "360",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "354": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.5,
+      "multithread": true,
+      "image_ref": [
+        "357",
+        0
+      ],
+      "image_target": [
+        "353",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "Color Match"
+    }
+  },
+  "355": {
+    "inputs": {
+      "width": [
+        "357",
+        3
+      ],
+      "height": [
+        "357",
+        4
+      ],
+      "upscale_method": "lanczos",
+      "keep_proportion": "pad",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 2,
+      "device": "cpu",
+      "image": [
+        "354",
+        0
+      ],
+      "mask": [
+        "368",
+        1
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "Resize Image v2"
+    }
+  },
+  "356": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "destination": [
+        "357",
+        0
+      ],
+      "source": [
+        "355",
+        0
+      ]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "合成图像（遮罩）"
+    }
+  },
+  "357": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "crop",
+      "method": "lanczos",
+      "round_to_multiple": "16",
+      "scale_to_side": "longest",
+      "scale_to_length": 1536,
+      "background_color": "#000000",
+      "image": [
+        "368",
+        0
+      ],
+      "mask": [
+        "368",
+        1
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "图层工具：按宽高比缩放 V2"
+    }
+  },
+  "358": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "359": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "360": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "361": {
+    "inputs": {
+      "mask_opacity": 1,
+      "mask_color": "255, 0, 0",
+      "pass_through": false,
+      "image": [
+        "357",
+        0
+      ],
+      "mask": [
+        "367",
+        0
+      ]
+    },
+    "class_type": "ImageAndMaskPreview",
+    "_meta": {
+      "title": "ImageAndMaskPreview"
+    }
+  },
+  "362": {
+    "inputs": {
+      "pixels": [
+        "357",
+        0
+      ],
+      "vae": [
+        "360",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "363": {
+    "inputs": {
+      "filename_prefix": "Flux2-Klein",
+      "images": [
+        "356",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "365": {
+    "inputs": {
+      "text": [
+        "366",
+        0
+      ],
+      "clip": [
+        "359",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "366": {
+    "inputs": {
+      "value": "把墙角的绿植，换成梅花树"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "367": {
+    "inputs": {
+      "grow": 10,
+      "blur": 30,
+      "blur_type": "gaussian",
+      "mask": [
+        "357",
+        1
+      ]
+    },
+    "class_type": "INPAINT_ExpandMask",
+    "_meta": {
+      "title": "Expand Mask"
+    }
+  },
+  "368": {
+    "inputs": {
+      "image": "clipspace/clipspace-painted-masked-1785308271425.png [input]"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "371": {
+    "inputs": {
+      "compare_view": {
+        "__value__": [
+          "",
+          ""
+        ]
+      },
+      "image_a": [
+        "368",
+        0
+      ],
+      "image_b": [
+        "356",
+        0
+      ]
+    },
+    "class_type": "ImageCompare",
+    "_meta": {
+      "title": "图像对比"
+    }
+  }
+}
