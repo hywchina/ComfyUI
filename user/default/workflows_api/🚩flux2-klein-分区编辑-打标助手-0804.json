@@ -108,6 +108,7 @@
   },
   "363": {
     "inputs": {
+      "context": ["277", 0],
       "prompt": "黑色部分替换成懒人沙发\n绿色部分替换成真的小狗",
       "img1_strength": 1,
       "img2_strength": 1,
@@ -133,8 +134,8 @@
     "inputs": {
       "filename_prefix": "Flux2-Klein",
       "images": [
-        "360",
-        0
+        "359",
+        1
       ]
     },
     "class_type": "SaveImage",

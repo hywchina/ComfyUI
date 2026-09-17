@@ -55,6 +55,7 @@
   },
   "291": {
     "inputs": {
+      "context": ["277", 0],
       "prompt": "红框内改成直升飞机，蓝框内是超人",
       "img1_strength": 1,
       "img2_strength": 1,
@@ -117,6 +118,7 @@
   },
   "355": {
     "inputs": {
+      "image": ["293", 1],
       "mask_opacity": 1,
       "update": "queue"
     },
