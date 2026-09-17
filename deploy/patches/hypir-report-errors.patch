@@ -23,10 +23,3 @@ index 191f1d2..d257114 100644
  
          # 卸载模型逻辑
          if unload_model_after:
-@@ -212,4 +213,4 @@ NODE_CLASS_MAPPINGS = {
- 
- NODE_DISPLAY_NAME_MAPPINGS = {
-     "HYPIRAdvancedRestoration": "HYPIR Advanced Restoration",
--} 
-\ No newline at end of file
-+}
