@@ -1,0 +1,40 @@
+name: rail-comfyui-validation
+services:
+  comfyui:
+    image: ${COMFYUI_IMAGE:-rail-comfyui:cuda13-local}
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.12-slim}
+        TORCH_CUDA_VERSION: ${TORCH_CUDA_VERSION:-13.0}
+    restart: unless-stopped
+    ports:
+      - "${COMFYUI_BIND_IP:-127.0.0.1}:${COMFYUI_HOST_PORT:-18188}:8188"
+    environment:
+      COMFYUI_VRAM_MODE: ${COMFYUI_VRAM_MODE:-normal}
+      COMFYUI_RESERVE_VRAM: ${COMFYUI_RESERVE_VRAM:-1}
+      OMP_NUM_THREADS: ${COMFYUI_CPU_THREADS:-4}
+    shm_size: ${COMFYUI_SHM_SIZE:-4gb}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${COMFYUI_GPU_ID:-0}"]
+              capabilities: [gpu]
+    volumes:
+      - type: bind
+        source: ${COMFYUI_MODEL_DIR:-../../../models/comfyui_models}
+        target: /app/ComfyUI/models
+        read_only: true
+        bind:
+          create_host_path: false
+      - ${COMFYUI_DATA_DIR:-../.runtime/container-data}/input:/app/ComfyUI/input
+      - ${COMFYUI_DATA_DIR:-../.runtime/container-data}/output:/app/ComfyUI/output
+      - ${COMFYUI_DATA_DIR:-../.runtime/container-data}/user:/app/ComfyUI/user
+      - ${COMFYUI_DATA_DIR:-../.runtime/container-data}/cache:/cache
+    networks: [comfyui]
+networks:
+  comfyui:
+    internal: ${COMFYUI_NETWORK_INTERNAL:-false}
