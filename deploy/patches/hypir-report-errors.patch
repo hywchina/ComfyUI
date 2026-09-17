@@ -1,0 +1,32 @@
+diff --git a/hypir_advanced_node.py b/hypir_advanced_node.py
+index 191f1d2..d257114 100644
+--- a/hypir_advanced_node.py
++++ b/hypir_advanced_node.py
+@@ -127,7 +127,7 @@ class HYPIRAdvancedRestoration:
+                 self.current_config = current_config
+                 print(f"HYPIR model loaded with custom parameters: model_t={model_t}, coeff_t={coeff_t}, lora_rank={lora_rank}")
+             except Exception as e:
+-                return (image, f"Error loading model: {str(e)}")
++                raise RuntimeError(f"HYPIR model loading failed: {e}") from e
+         
+         try:
+             # Convert image to format expected by HYPIR
+@@ -188,8 +188,9 @@ class HYPIRAdvancedRestoration:
+             status_msg = f"Success! Used prompt: {prompt}\nParameters: model_t={model_t}, coeff_t={coeff_t}, lora_rank={lora_rank}, patch_size={patch_size}\nEncode patch: {encode_patch_size}, Decode patch: {decode_patch_size}, Batch size: {batch_size}"
+             return_value = (output_image, status_msg)
+         except Exception as e:
+-            print(f"HYPIR advanced restoration error: {e}")
+-            return_value = (image, f"Error during restoration: {str(e)}")
++            self.hypir = None
++            self.current_config = None
++            raise RuntimeError(f"HYPIR restoration failed: {e}") from e
+ 
+         # 卸载模型逻辑
+         if unload_model_after:
+@@ -212,4 +213,4 @@ NODE_CLASS_MAPPINGS = {
+ 
+ NODE_DISPLAY_NAME_MAPPINGS = {
+     "HYPIRAdvancedRestoration": "HYPIR Advanced Restoration",
+-} 
+\ No newline at end of file
++}
