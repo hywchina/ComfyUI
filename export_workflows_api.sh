@@ -6,7 +6,7 @@ PROJECT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 INPUT_DIR="${1:-$PROJECT_DIR/user/default/workflows}"
 OUTPUT_DIR="${2:-$PROJECT_DIR/user/default/workflows_api}"
 COMFYUI_URL="${COMFYUI_URL:-https://127.0.0.1:8188}"
-COMFYUI_CA_CERT="${COMFYUI_CA_CERT:-$PROJECT_DIR-certs/comfyui-local-ca.crt}"
+COMFYUI_CA_CERT="${COMFYUI_CA_CERT:-$PROJECT_DIR/.runtime/https/comfyui-local-ca.crt}"
 
 if [[ ! -d "$INPUT_DIR" ]]; then
     echo "Workflow directory does not exist: $INPUT_DIR" >&2

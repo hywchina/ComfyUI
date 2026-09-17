@@ -16,3 +16,11 @@
 - 改造细节：使用 uv 管理的 Python 3.12.13 创建 `.venv`；固定 CUDA 13.0 PyTorch 版本集合；检查共享模块覆盖顺序，恢复 OpenCV 标准版和 ONNX Runtime GPU 版。
 - 注意事项：排除源码已经不存在的 comfystream editable 项；原环境的两项 comfyui 包声明冲突保留并说明。虚拟环境、权重、下载缓存不进入 Git。
 - 验证：320 个包版本对照通过；脚本重复执行、核心导入、OpenCV、ONNX CUDA 后端及 RTX 3090 CUDA 张量运算通过。
+
+## C03 — Restart the project HTTPS service with its local virtualenv
+
+- 动机：移除旧开发目录和 Conda 的硬编码，避免重启误停其他项目，并确保报告成功时 API 已真正就绪。
+- 范围：改写 HTTPS 重启脚本；导出脚本同步使用新的 CA 默认路径；忽略 `.runtime` 私钥、PID 与运行记录。
+- 改造细节：按脚本位置定位项目，显式使用 `.venv/bin/python`；基于进程工作目录筛选当前项目；增加重启锁、端口检查、独立后台会话、证书验证和 `/system_stats` 就绪等待。端口、IP、证书目录和超时支持环境变量。
+- 注意事项：不提交证书私钥；占用端口的其他服务不会被停止。首次访问客户端仍需信任本地 CA。
+- 验证：启动及再次重启通过；HTTPS/WSS、上传、任务提交、历史和结果下载通过，且测试未跳过证书验证。
