@@ -4,7 +4,7 @@
 
 `Dockerfile` 是本项目唯一业务镜像配方；`deploy/config.env` 保存硬件和端口设置，`deploy/compose.yaml` 只启动一个 ComfyUI 容器。
 
-rail-system 根 Compose 的 ComfyUI 构建上下文同步指向 `code/ComfyUI`，原 `docker/ComfyUI/Dockerfile` 和 ignore 文件是指向本项目的软链接。根目录使用 `COMFYUI_IMAGE=rail-comfyui:cuda13-local`，避免本地测试与整体编排使用不同镜像。根部署目录目前不是 Git 仓库；这些整合配置随 rail-system 目录交付，ComfyUI 代码及构建配方提交在本仓库。
+rail-system 根 Compose 的 ComfyUI 构建上下文指向 `code/ComfyUI`，原 `docker/ComfyUI/Dockerfile` 和 ignore 文件是指向本项目的软链接。根目录和单服务 Compose 统一使用 `COMFYUI_IMAGE=rail-comfyui:1.0.0`。根部署目录目前不是 Git 仓库；这些整合配置随 rail-system 目录交付，ComfyUI 代码及构建配方提交在本仓库。
 
 ```bash
 bash set_env.sh
@@ -43,7 +43,7 @@ bash deploy/run.sh
 构建机验证通过后导出一个业务镜像：
 
 ```bash
-docker save -o ../../images/comfyui.tar rail-comfyui:cuda13-local
+docker save -o ../../images/comfyui.tar rail-comfyui:1.0.0
 (cd ../../images && sha256sum comfyui.tar > comfyui.tar.sha256)
 ```
 

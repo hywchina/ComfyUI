@@ -1,5 +1,7 @@
 # ComfyUI 镜像验收记录（2026-09-17）
 
+> 当前正式标签已统一为 `rail-comfyui:1.0.0`，与本页验收时的 `rail-comfyui:cuda13-local` 指向同一个镜像 ID；以下保留原始验收标签和归档信息作为历史证据。
+
 本机 HTTPS、断网 GPU 容器、最终镜像宿主发布端口三轮均为 **18/18 通过**，各轮下载 54 个输出文件。所有任务串行执行，每项完成并卸载模型后才提交下一项；检查成功历史、空 node_errors、实际输出和 HYPIR 成功状态。
 
 ## 环境与交付物
@@ -92,7 +94,7 @@ docker compose --env-file deploy/config.env -f deploy/compose.yaml stop comfyui
 bash restart_comfyui_https.sh
 ```
 
-离线导入与配置项见 [部署说明](README.md)。不要在同一张显存不足的 GPU 上同时运行本地服务与测试容器的推理任务。
+离线导入与配置项见 [ComfyUI 部署说明](README.md)。不要在同一张显存不足的 GPU 上同时运行本地服务与测试容器的推理任务。
 
 原始证据保存在本项目的 .runtime（不提交图像、日志、证书到 Git）：
 
@@ -101,4 +103,4 @@ bash restart_comfyui_https.sh
 - 最终：container-workflows、container-port-api.json；docker-build-final.log、docker-load.log。
 - 每个工作流目录均包含实际请求、完整历史和下载文件；对应 results.json 保存状态、参数变更、计时和 prompt_id。
 
-英文提交与逐条中文变更说明见 [commitlog.md](../commitlog.md)。
+英文提交与逐条中文变更说明见 [ComfyUI commitlog](../commitlog.md)。
